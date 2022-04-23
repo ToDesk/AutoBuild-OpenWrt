@@ -18,8 +18,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -74,11 +74,17 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    #- name: Import external feeds - passwall
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"      
+    - name: Import external feeds - passwall
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+        git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/lean/luci-app-bandwidthd
+        git clone https://github.com/destan19/OpenAppFilter.git package/lean/OpenAppFilter
+        git clone https://github.com/sirpdboy/sirpdboy-package package/lean/sirpdboy-package
+        git clone https://github.com/jerrykuku/openwrt-package package/lean/openwrt-package
+        git clone https://github.com/kenzok8/openwrt-packages package/lean/openwrt-packages
+        git clone https://github.com/kenzok8/small package/lean/small
+        
 
     #- name: Import external feeds - JerryKuKu Argon
     #  working-directory: ./openwrt
